@@ -1,18 +1,30 @@
+<meta charset="utf-8">
 <p data-ke-size="size16">&nbsp;</p>
 <div>
 <style>
     :root {
-      --primary: #2f80ff;
-      --bg-card: #f7f8fb;
-      --text-main: #222;
-      --text-sub: #555;
-      --border-soft: #e2e4ee;
+      --primary: #0e7490;
+      --bg: #f4f8fa;
+      --bg-card: #ffffff;
+      --text-main: #1b2733;
+      --text-sub: #5a6b7f;
+      --border-soft: #e2eaf0;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --primary: #6fe0d6;
+        --bg: #10161d;
+        --bg-card: #1a2230;
+        --text-main: #e8eef6;
+        --text-sub: #9fb0c3;
+        --border-soft: #2a3547;
+      }
     }
     * { box-sizing: border-box; }
     body {
       margin: 0;
       font-family: -apple-system, BlinkMacSystemFont, "SF Pro", system-ui, sans-serif;
-      background: #ffffff;
+      background: var(--bg);
       color: var(--text-main);
       line-height: 1.6;
     }
@@ -38,7 +50,7 @@
       color: #fff;
       font-size: 26px;
       font-weight: 700;
-      box-shadow: 0 8px 20px rgba(47, 128, 255, 0.4);
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.18);
     }
     h1 {
       margin: 0 0 4px;
@@ -107,14 +119,22 @@
     footer {
       margin-top: 32px;
       padding-top: 16px;
-      border-top: 1px solid #eee;
+      border-top: 1px solid var(--border-soft);
       font-size: 12px;
-      color: #999;
+      color: var(--text-sub);
       text-align: center;
     }
   </style>
 </div>
-<div class="wrap"><header>
+<div class="wrap">
+<div style="display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:22px;font-size:13.5px;flex-wrap:wrap;">
+  <a href="../../" style="color:var(--primary);text-decoration:none;font-weight:600;">← ButtonMushroom 홈</a>
+  <span style="display:flex;gap:16px;align-items:center;">
+    <a href="../privacy/?lang=ko" style="color:var(--primary);text-decoration:none;font-weight:600;">개인정보처리방침</a>
+    <a href="../en/" style="color:var(--text-sub);text-decoration:none;font-weight:600;">EN</a>
+  </span>
+</div>
+<header>
 <div>
 <h1>OnLayer 지원 센터</h1>
 <div class="subtitle">분할 카메라 &amp; 슬라이드 비교를 위한 OnLayer 앱 고객지원 페이지입니다.</div>
@@ -249,11 +269,11 @@
 <div class="card">
 <h3 data-ke-size="size23">개인정보 처리방침</h3>
 <p data-ke-size="size16">OnLayer는 서비스 제공에 필요한 최소한의 정보만을 사용합니다.</p>
-<p data-ke-size="size16">자세한 내용은 <a href="https://ssong2stroy.tistory.com/22" target="_blank" rel="noopener"> 개인정보 처리방침 링크</a>를 참고해 주세요.</p>
+<p data-ke-size="size16">자세한 내용은 <a href="../privacy/?lang=ko"> 개인정보처리방침</a>을 참고해 주세요.</p>
 </div>
 <div class="card">
 <h3 data-ke-size="size23">버그 제보 및 기능 제안</h3>
-<p data-ke-size="size16">예상치 못한 오류를 발견하셨거나 앱 개선을 위한 아이디어가 있다면 <a href="mailto:onlayer26@gmail.com?subject=[Onlayer]%20버그%20제보">버그 제보 메일 </a> 로 알려주세요.</p>
+<p data-ke-size="size16">예상치 못한 오류를 발견하셨거나 앱 개선을 위한 아이디어가 있다면 <a href="mailto:onlayer26@gmail.com?subject=%5BOnlayer%5D%20%EB%B2%84%EA%B7%B8%20%EC%A0%9C%EB%B3%B4" target="_blank" rel="noopener">버그 제보 메일 </a> 로 알려주세요.</p>
 <p data-ke-size="size16">보내주신 소중한 의견은 우선적으로 검토하여 향후 업데이트에 즉각 반영하도록 최선을 다하겠습니다.</p>
 </div>
 </section>

@@ -1,67 +1,317 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="ko" data-lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>App Studio</title>
+    <title>ButtonMushroom — 앱 &amp; 게임 스튜디오</title>
+    <meta name="description" content="ButtonMushroom은 Simple & Modern 감성을 담은 글로벌 애플리케이션을 만듭니다. 분할 카메라 앱 Onlayer, 가계도 앱 나의 가족.">
     <style>
-        body { 
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; 
-            line-height: 1.6; 
-            max-width: 600px; 
-            margin: 50px auto; 
-            padding: 0 20px; 
-            color: #333; 
+        :root {
+            --bg: #f4f8fa;
+            --card: #ffffff;
+            --ink: #1b2733;
+            --sub: #5a6b7f;
+            --line: #e2eaf0;
+            --accent: #0e7490;
+            --accent-deep: #0b5c73;
+            --on-accent: #ffffff;
+            --accent-soft: #dcf3f7;
+            --badge-green: #166f4d;
+            --badge-green-soft: #def3ea;
         }
-        h1 { 
-            font-weight: 300; 
-            letter-spacing: -0.5px; 
-            border-bottom: 1px solid #eee; 
-            padding-bottom: 15px; 
-            margin-bottom: 30px; 
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg: #10161d;
+                --card: #1a2230;
+                --ink: #e8eef6;
+                --sub: #9fb0c3;
+                --line: #2a3547;
+                --accent: #6fe0d6;
+                --accent-deep: #6fe0d6;
+                --on-accent: #10161d;
+                --accent-soft: #12333a;
+                --badge-green: #79dcb0;
+                --badge-green-soft: #143329;
+            }
         }
-        h2 { 
-            font-weight: 500; 
-            font-size: 1.2rem; 
-            margin: 0 0 5px 0; 
+        * { box-sizing: border-box; }
+        body {
+            margin: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", Roboto, sans-serif;
+            background: var(--bg);
+            color: var(--ink);
+            line-height: 1.65;
+            -webkit-font-smoothing: antialiased;
         }
-        p.desc { 
-            color: #666; 
-            font-size: 0.95rem; 
-            margin-top: 0; 
-            margin-bottom: 15px; 
+        .wrap { max-width: 680px; margin: 0 auto; padding: 40px 20px 60px; }
+
+        /* 언어 전환 */
+        .lang-switch {
+            display: flex; justify-content: flex-end; gap: 4px; margin-bottom: 28px;
         }
-        .app-card { 
-            background: #fafafa; 
-            padding: 25px; 
-            border-radius: 12px; 
-            margin-bottom: 20px; 
-            border: 1px solid #f0f0f0;
+        .lang-switch button {
+            border: 1px solid var(--line); background: var(--card); color: var(--sub);
+            font-size: 12px; font-weight: 600; padding: 5px 12px; border-radius: 999px;
+            cursor: pointer; transition: all .15s;
         }
-        .links a { 
-            display: inline-block; 
-            margin-right: 15px; 
-            color: #007aff; 
-            text-decoration: none; 
-            font-size: 0.9rem; 
-            font-weight: 500;
+        .lang-switch button.active {
+            background: var(--accent); border-color: var(--accent); color: var(--on-accent);
         }
-        .links a:hover { 
-            text-decoration: underline; 
+        html[data-lang="ko"] .en { display: none; }
+        html[data-lang="en"] .ko { display: none; }
+
+        /* 히어로 */
+        .hero { margin-bottom: 48px; }
+        .logo-mark {
+            width: 72px; height: 72px; margin-bottom: 18px; display: block;
+        }
+        h1 {
+            margin: 0 0 6px; font-size: 30px; font-weight: 800; letter-spacing: -0.5px;
+        }
+        h1 small { display: block; font-size: 15px; font-weight: 600; color: var(--accent); letter-spacing: 1px; margin-top: 2px; }
+        .tagline { margin: 14px 0 0; font-size: 16px; color: var(--sub); }
+
+        /* 섹션 */
+        section { margin-bottom: 44px; }
+        h2 {
+            font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px;
+            color: var(--accent); margin: 0 0 16px;
+        }
+
+        /* 앱 카드 */
+        .app-card {
+            background: var(--card); border: 1px solid var(--line); border-radius: 16px;
+            padding: 24px; margin-bottom: 16px;
+        }
+        .app-head { display: flex; align-items: center; gap: 14px; margin-bottom: 10px; }
+        .app-icon {
+            width: 48px; height: 48px; border-radius: 12px; flex-shrink: 0;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 24px; color: #fff; font-weight: 800; overflow: hidden;
+        }
+        .app-icon img { width: 100%; height: 100%; object-fit: cover; display: block; }
+        .app-title-group h3 { margin: 0; font-size: 18px; font-weight: 700; }
+        .badge {
+            display: inline-block; font-size: 11px; font-weight: 700; padding: 2px 9px;
+            border-radius: 999px; margin-top: 3px;
+        }
+        .badge-soon { background: var(--accent-soft); color: var(--accent-deep); }
+        .badge-live { background: var(--badge-green-soft); color: var(--badge-green); }
+        .app-card p { margin: 6px 0 16px; font-size: 14.5px; color: var(--sub); }
+
+        /* 정보 링크: 현재 언어만 노출(구분점 · 로 연결) */
+        .links { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 10px; }
+        .links a {
+            color: var(--accent); text-decoration: none; font-size: 13.5px; font-weight: 600;
+        }
+        .links a:hover { text-decoration: underline; }
+        .links a + a::before {
+            content: "·"; color: var(--sub); opacity: .5; font-weight: 400;
+            margin-right: 10px; text-decoration: none; display: inline-block;
+        }
+
+        /* 스토어 배지: 별도 줄, 아웃라인 버튼 */
+        .stores { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+        .store-btn {
+            display: inline-flex; align-items: center; gap: 6px;
+            border: 1px solid var(--line); border-radius: 9px; padding: 6px 12px;
+            font-size: 12.5px; font-weight: 600; color: var(--ink); text-decoration: none;
+            transition: border-color .15s, color .15s;
+        }
+        .store-btn:hover { border-color: var(--accent); color: var(--accent); }
+        .store-btn svg { width: 14px; height: 14px; flex-shrink: 0; }
+
+        /* 스튜디오 정보 */
+        .info-card {
+            background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 24px;
+        }
+        .info-row { display: flex; gap: 12px; font-size: 14.5px; padding: 7px 0; }
+        .info-row dt { flex-shrink: 0; width: 110px; color: var(--sub); font-weight: 600; margin: 0; }
+        .info-row dd { margin: 0; }
+        .info-card dl { margin: 0; }
+        .info-card a { color: var(--accent); text-decoration: none; font-weight: 600; }
+        .info-card a:hover { text-decoration: underline; }
+
+        footer {
+            margin-top: 56px; padding-top: 20px; border-top: 1px solid var(--line);
+            font-size: 12.5px; color: var(--sub); display: flex; flex-wrap: wrap; gap: 8px 20px;
+            justify-content: space-between;
+        }
+        footer a { color: var(--sub); text-decoration: none; }
+        footer a:hover { color: var(--accent); }
+
+        @media (max-width: 480px) {
+            .wrap { padding: 28px 18px 48px; }
+            h1 { font-size: 26px; }
+            .info-row { flex-direction: column; gap: 0; }
+            .info-row dt { width: auto; }
         }
     </style>
 </head>
 <body>
-    <h1>App Studio</h1>
-    <p style="margin-bottom: 40px;">Simple & Modern 감성을 담은 글로벌 애플리케이션을 만듭니다.</p>
+    <div class="wrap">
+        <nav class="lang-switch" aria-label="Language">
+            <button type="button" data-set-lang="ko" aria-pressed="true">한국어</button>
+            <button type="button" data-set-lang="en" aria-pressed="false">EN</button>
+        </nav>
 
-    <!-- Onlayer 앱 섹션 -->
-    <div class="app-card">
-        <h2>Onlayer</h2>       
-        <div class="links">
-            <a href="./onlayer/ko/">🇰🇷 한국어 지원 (Korean)</a>
-            <a href="./onlayer/en/">🇺🇸 English Support</a>
-        </div>
-    </div>    
+        <header class="hero">
+            <img class="logo-mark" src="./assets/logo.png" alt="ButtonMushroom logo" width="72" height="72">
+            <h1>
+                ButtonMushroom
+                <small>APPS &amp; GAMES STUDIO</small>
+            </h1>
+            <p class="tagline">
+                <span class="ko">Simple &amp; Modern 감성을 담은 글로벌 애플리케이션을 만듭니다.</span>
+                <span class="en">Crafting global applications with a simple &amp; modern sensibility.</span>
+            </p>
+        </header>
+
+        <section>
+            <h2><span class="ko">만들고 있는 것들</span><span class="en">Apps &amp; Games</span></h2>
+
+            <!-- ▼▼▼ Word Cell 출시 시 이 주석을 해제하고 App Store 링크(TODO)를 채워 주세요 ▼▼▼
+            <div class="app-card">
+                <div class="app-head">
+                    <div class="app-icon"><img src="./assets/icon-wordcell.png" alt="" width="48" height="48"></div>
+                    <div class="app-title-group">
+                        <h3>Word Cell</h3>
+                        <span class="badge badge-live"><span class="ko">서비스 중</span><span class="en">Available</span></span>
+                    </div>
+                </div>
+                <p>
+                    <span class="ko">주제와 단어 카드를 맞춰 세트를 완성하는 프리셀 방식의 단어 퍼즐 게임.
+                    카드 앞면은 배우고 싶은 언어로, 상세 설명은 모국어로 보여주는 이중 언어 시스템으로
+                    10개 언어의 어휘를 놀면서 익힐 수 있습니다.</span>
+                    <span class="en">A FreeCell-style word puzzle where you match topic and word cards to complete sets.
+                    Cards show the language you're learning while explanations appear in your native language —
+                    build vocabulary in 10 languages, just by playing.</span>
+                </p>
+                <div class="links">
+                    <a href="./wordcell/privacy/?lang=ko" data-href-ko="./wordcell/privacy/?lang=ko" data-href-en="./wordcell/privacy/?lang=en"><span class="ko">개인정보처리방침</span><span class="en">Privacy Policy</span></a>
+                    <a href="./wordcell/?lang=ko" data-href-ko="./wordcell/?lang=ko" data-href-en="./wordcell/?lang=en"><span class="ko">지원 센터</span><span class="en">Support</span></a>
+                    <a href="mailto:buttonmushroom.co@gmail.com?subject=%5BWord%20Cell%5D" target="_blank" rel="noopener"><span class="ko">문의하기</span><span class="en">Contact</span></a>
+                </div>
+                <div class="stores">
+                    <a class="store-btn" href="#TODO_WORDCELL_APPSTORE_URL" target="_blank" rel="noopener">
+                        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.4 12.7c0-2 1.6-3 1.7-3.1-1-1.4-2.4-1.6-2.9-1.6-1.2-.1-2.4.7-3 .7s-1.6-.7-2.6-.7c-1.3 0-2.6.8-3.3 2-1.4 2.4-.4 6 1 7.9.7.9 1.4 2 2.4 1.9 1-.04 1.3-.6 2.5-.6s1.5.6 2.5.6 1.7-.9 2.3-1.8c.7-1 1-2 1-2.1-.02-.01-2.1-.8-2.1-3.1zM14.6 6.3c.5-.6.9-1.5.8-2.3-.8.03-1.7.5-2.2 1.1-.5.6-.9 1.4-.8 2.3.8.06 1.7-.4 2.2-1.1z"/></svg>
+                        App Store
+                    </a>
+                    <a class="store-btn" href="#TODO_WORDCELL_PLAY_URL" target="_blank" rel="noopener">
+                        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3.6 2.3c-.3.2-.5.6-.5 1v17.4c0 .4.2.8.5 1l9.4-9.7L3.6 2.3zm11 8.3 2.4-2.4-9-5.2c-.3-.2-.7-.2-1 0l7.6 7.6zm0 2.8L7 21c.3.2.7.2 1 0l9-5.2-2.4-2.4zm5.4-1.8-2.6-1.5-2.6 2.7 2.6 2.7 2.6-1.5c.6-.4.6-1.3 0-1.7z"/></svg>
+                        Google Play
+                    </a>
+                </div>
+            </div>
+            ▲▲▲ Word Cell 출시 시 여기까지 주석 해제 ▲▲▲ -->
+
+            <div class="app-card">
+                <div class="app-head">
+                    <div class="app-icon"><img src="./assets/icon-onlayer.png" alt="" width="48" height="48"></div>
+                    <div class="app-title-group">
+                        <h3>Onlayer</h3>
+                        <span class="badge badge-live"><span class="ko">서비스 중</span><span class="en">Available</span></span>
+                    </div>
+                </div>
+                <p>
+                    <span class="ko">분할 카메라와 슬라이드 비교로 사진을 나란히 놓고 견주어 보는 카메라 앱.</span>
+                    <span class="en">A camera app for side-by-side shots — split layouts and slide comparison built in.</span>
+                </p>
+                <div class="links">
+                    <a href="./onlayer/privacy/?lang=ko" data-href-ko="./onlayer/privacy/?lang=ko" data-href-en="./onlayer/privacy/?lang=en"><span class="ko">개인정보처리방침</span><span class="en">Privacy Policy</span></a>
+                    <a href="./onlayer/ko/" data-href-ko="./onlayer/ko/" data-href-en="./onlayer/en/"><span class="ko">지원 센터</span><span class="en">Support</span></a>
+                    <a href="mailto:onlayer26@gmail.com?subject=%5BOnlayer%5D" target="_blank" rel="noopener"><span class="ko">문의하기</span><span class="en">Contact</span></a>
+                </div>
+                <div class="stores">
+                    <a class="store-btn" href="https://apps.apple.com/kr/app/id6758535404" target="_blank" rel="noopener">
+                        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.4 12.7c0-2 1.6-3 1.7-3.1-1-1.4-2.4-1.6-2.9-1.6-1.2-.1-2.4.7-3 .7s-1.6-.7-2.6-.7c-1.3 0-2.6.8-3.3 2-1.4 2.4-.4 6 1 7.9.7.9 1.4 2 2.4 1.9 1-.04 1.3-.6 2.5-.6s1.5.6 2.5.6 1.7-.9 2.3-1.8c.7-1 1-2 1-2.1-.02-.01-2.1-.8-2.1-3.1zM14.6 6.3c.5-.6.9-1.5.8-2.3-.8.03-1.7.5-2.2 1.1-.5.6-.9 1.4-.8 2.3.8.06 1.7-.4 2.2-1.1z"/></svg>
+                        App Store
+                    </a>
+                    <a class="store-btn" href="https://play.google.com/store/apps/details?id=com.yoursong.lumipic" target="_blank" rel="noopener">
+                        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3.6 2.3c-.3.2-.5.6-.5 1v17.4c0 .4.2.8.5 1l9.4-9.7L3.6 2.3zm11 8.3 2.4-2.4-9-5.2c-.3-.2-.7-.2-1 0l7.6 7.6zm0 2.8L7 21c.3.2.7.2 1 0l9-5.2-2.4-2.4zm5.4-1.8-2.6-1.5-2.6 2.7 2.6 2.7 2.6-1.5c.6-.4.6-1.3 0-1.7-.6-.4 0 0 0-.7z"/></svg>
+                        Google Play
+                    </a>
+                </div>
+            </div>
+
+            <div class="app-card">
+                <div class="app-head">
+                    <div class="app-icon"><img src="./assets/icon-myfamily.png" alt="" width="48" height="48"></div>
+                    <div class="app-title-group">
+                        <h3><span class="ko">나의 가족</span><span class="en">MyFamily (나의 가족)</span></h3>
+                        <span class="badge badge-live"><span class="ko">서비스 중</span><span class="en">Available</span></span>
+                    </div>
+                </div>
+                <p>
+                    <span class="ko">가족 정보를 등록해 가계도를 그리고, 생일 알림과 가족 이벤트를 관리하는 앱.</span>
+                    <span class="en">Draw your family tree, manage family info and events, and never miss a birthday.</span>
+                </p>
+                <div class="links">
+                    <a href="./myfamily/privacy/?lang=ko" data-href-ko="./myfamily/privacy/?lang=ko" data-href-en="./myfamily/privacy/?lang=en"><span class="ko">개인정보처리방침</span><span class="en">Privacy Policy</span></a>
+                    <a href="./myfamily/?lang=ko" data-href-ko="./myfamily/?lang=ko" data-href-en="./myfamily/?lang=en"><span class="ko">지원 센터</span><span class="en">Support</span></a>
+                    <a href="mailto:buttonmushroom.co@gmail.com?subject=%5B%EB%82%98%EC%9D%98%20%EA%B0%80%EC%A1%B1%5D" target="_blank" rel="noopener"><span class="ko">문의하기</span><span class="en">Contact</span></a>
+                </div>
+                <div class="stores">
+                    <a class="store-btn" href="https://apps.apple.com/kr/app/id1461719361" target="_blank" rel="noopener">
+                        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.4 12.7c0-2 1.6-3 1.7-3.1-1-1.4-2.4-1.6-2.9-1.6-1.2-.1-2.4.7-3 .7s-1.6-.7-2.6-.7c-1.3 0-2.6.8-3.3 2-1.4 2.4-.4 6 1 7.9.7.9 1.4 2 2.4 1.9 1-.04 1.3-.6 2.5-.6s1.5.6 2.5.6 1.7-.9 2.3-1.8c.7-1 1-2 1-2.1-.02-.01-2.1-.8-2.1-3.1zM14.6 6.3c.5-.6.9-1.5.8-2.3-.8.03-1.7.5-2.2 1.1-.5.6-.9 1.4-.8 2.3.8.06 1.7-.4 2.2-1.1z"/></svg>
+                        App Store
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2><span class="ko">스튜디오</span><span class="en">Studio</span></h2>
+            <div class="info-card">
+                <dl>
+                    <div class="info-row">
+                        <dt><span class="ko">상호</span><span class="en">Business name</span></dt>
+                        <dd><span class="ko">양송이 (ButtonMushroom)</span><span class="en">ButtonMushroom (양송이)</span></dd>
+                    </div>
+                    <div class="info-row">
+                        <dt><span class="ko">하는 일</span><span class="en">What we do</span></dt>
+                        <dd><span class="ko">모바일 앱 · 게임 개발</span><span class="en">Mobile app &amp; game development</span></dd>
+                    </div>
+                    <div class="info-row">
+                        <dt><span class="ko">문의</span><span class="en">Contact</span></dt>
+                        <dd><a href="mailto:buttonmushroom.co@gmail.com" target="_blank" rel="noopener">buttonmushroom.co@gmail.com</a></dd>
+                    </div>
+                </dl>
+            </div>
+        </section>
+
+        <footer>
+            <span>© 2026 ButtonMushroom</span>
+        </footer>
+    </div>
+
+    <script>
+        (function () {
+            var saved = null;
+            try { saved = localStorage.getItem('bm-lang'); } catch (e) {}
+            var lang = saved || ((navigator.language || 'en').toLowerCase().indexOf('ko') === 0 ? 'ko' : 'en');
+            apply(lang);
+
+            document.querySelectorAll('[data-set-lang]').forEach(function (btn) {
+                btn.addEventListener('click', function () {
+                    apply(btn.getAttribute('data-set-lang'), true);
+                });
+            });
+
+            function apply(l, save) {
+                document.documentElement.setAttribute('data-lang', l);
+                document.documentElement.setAttribute('lang', l);
+                document.querySelectorAll('[data-set-lang]').forEach(function (b) {
+                    var on = b.getAttribute('data-set-lang') === l;
+                    b.classList.toggle('active', on);
+                    b.setAttribute('aria-pressed', String(on));
+                });
+                document.querySelectorAll('a[data-href-' + l + ']').forEach(function (a) {
+                    a.setAttribute('href', a.getAttribute('data-href-' + l));
+                });
+                if (save) { try { localStorage.setItem('bm-lang', l); } catch (e) {} }
+            }
+        })();
+    </script>
 </body>
 </html>

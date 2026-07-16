@@ -1,18 +1,30 @@
+<meta charset="utf-8">
 <p data-ke-size="size16">&nbsp;</p>
 <div>
 <style>
     :root {
-      --primary: #2f80ff;
-      --bg-card: #f7f8fb;
-      --text-main: #222;
-      --text-sub: #555;
-      --border-soft: #e2e4ee;
+      --primary: #0e7490;
+      --bg: #f4f8fa;
+      --bg-card: #ffffff;
+      --text-main: #1b2733;
+      --text-sub: #5a6b7f;
+      --border-soft: #e2eaf0;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --primary: #6fe0d6;
+        --bg: #10161d;
+        --bg-card: #1a2230;
+        --text-main: #e8eef6;
+        --text-sub: #9fb0c3;
+        --border-soft: #2a3547;
+      }
     }
     * { box-sizing: border-box; }
     body {
       margin: 0;
       font-family: -apple-system, BlinkMacSystemFont, "SF Pro", system-ui, sans-serif;
-      background: #ffffff;
+      background: var(--bg);
       color: var(--text-main);
       line-height: 1.6;
     }
@@ -38,7 +50,7 @@
       color: #fff;
       font-size: 26px;
       font-weight: 700;
-      box-shadow: 0 8px 20px rgba(47, 128, 255, 0.4);
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.18);
     }
     h1 {
       margin: 0 0 4px;
@@ -106,14 +118,22 @@
     footer {
       margin-top: 32px;
       padding-top: 16px;
-      border-top: 1px solid #eee;
+      border-top: 1px solid var(--border-soft);
       font-size: 12px;
-      color: #999;
+      color: var(--text-sub);
       text-align: center;
     }
   </style>
 </div>
-<div class="wrap"><header>
+<div class="wrap">
+<div style="display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:22px;font-size:13.5px;flex-wrap:wrap;">
+  <a href="../../" style="color:var(--primary);text-decoration:none;font-weight:600;">← ButtonMushroom Home</a>
+  <span style="display:flex;gap:16px;align-items:center;">
+    <a href="../privacy/?lang=en" style="color:var(--primary);text-decoration:none;font-weight:600;">Privacy Policy</a>
+    <a href="../ko/" style="color:var(--text-sub);text-decoration:none;font-weight:600;">한국어</a>
+  </span>
+</div>
+<header>
 <div>
 <h1>OnLayer&nbsp; Support Center</h1>
 <div class="subtitle">This is the customer support page for OnLayer, the app for Split Camera &amp; Slide comparisons.</div>
@@ -242,11 +262,11 @@
 <div class="card">
 <h3 data-ke-size="size23">Privacy Policy</h3>
 <p data-ke-size="size16">OnLayer uses only the minimum information necessary to provide our services.</p>
-<p data-ke-size="size16">For more details, please refer to the <a href="https://ssong2stroy.tistory.com/24" target="_blank" rel="noopener"> Privacy Policy link</a>.</p>
+<p data-ke-size="size16">For more details, please refer to the <a href="../privacy/?lang=en"> Privacy Policy</a>.</p>
 </div>
 <div class="card">
 <h3 data-ke-size="size23">Bug Reports &amp; Suggestions</h3>
-<p data-ke-size="size16">If you encounter any unexpected errors or have ideas for improvement, please let us know <a href="mailto:onlayer26@gmail.com?subject=[Onlayer]%20Bug%20Report"> via email</a>.<br />We prioritize reviewing all user feedback and strive to reflect it in our updates as quickly as possible.</p>
+<p data-ke-size="size16">If you encounter any unexpected errors or have ideas for improvement, please let us know <a href="mailto:onlayer26@gmail.com?subject=%5BOnlayer%5D%20Bug%20Report" target="_blank" rel="noopener"> via email</a>.<br />We prioritize reviewing all user feedback and strive to reflect it in our updates as quickly as possible.</p>
 </div>
 </section>
 <footer>OnLayer / Compare &copy; 2026. All rights reserved.</footer></div>

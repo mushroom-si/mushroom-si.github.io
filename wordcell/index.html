@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="ko" data-lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Word Cell 지원 센터 · Support</title>
+    <style>
+        :root {
+            --bg: #f4f8fa;
+            --card: #ffffff;
+            --ink: #1b2733;
+            --sub: #5a6b7f;
+            --line: #e2eaf0;
+            --accent: #0e7490;
+            --on-accent: #ffffff;
+        }
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg: #10161d;
+                --card: #1a2230;
+                --ink: #e8eef6;
+                --sub: #9fb0c3;
+                --line: #2a3547;
+                --accent: #6fe0d6;
+                --on-accent: #10161d;
+            }
+        }
+        * { box-sizing: border-box; }
+        body {
+            margin: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", Roboto, sans-serif;
+            background: var(--bg);
+            color: var(--ink);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+        }
+        .wrap { max-width: 720px; margin: 0 auto; padding: 36px 20px 60px; }
+        .top-bar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; }
+        .back { color: var(--accent); text-decoration: none; font-size: 13.5px; font-weight: 600; }
+        .back:hover { text-decoration: underline; }
+        .lang-switch { display: flex; gap: 4px; }
+        .lang-switch button {
+            border: 1px solid var(--line); background: var(--card); color: var(--sub);
+            font-size: 12px; font-weight: 600; padding: 5px 12px; border-radius: 999px;
+            cursor: pointer;
+        }
+        .lang-switch button.active { background: var(--accent); border-color: var(--accent); color: var(--on-accent); }
+        html[data-lang="ko"] .en { display: none; }
+        html[data-lang="en"] .ko { display: none; }
+
+        .app-head { display: flex; align-items: center; gap: 14px; margin-bottom: 6px; }
+        .app-head img { width: 56px; height: 56px; border-radius: 13px; }
+        h1 { font-size: 24px; font-weight: 800; letter-spacing: -0.3px; margin: 0; }
+        .meta { color: var(--sub); font-size: 13.5px; margin: 2px 0 0; }
+        h2 { font-size: 17px; font-weight: 700; margin: 34px 0 10px; }
+        p, li { font-size: 14.5px; color: var(--sub); }
+        p strong, li strong { color: var(--ink); }
+        ul { padding-left: 20px; margin: 8px 0; }
+        a { color: var(--accent); text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        .card {
+            background: var(--card); border: 1px solid var(--line); border-radius: 14px;
+            padding: 16px 18px; margin-top: 10px;
+        }
+        footer { margin-top: 48px; padding-top: 18px; border-top: 1px solid var(--line); font-size: 12.5px; color: var(--sub); }
+    </style>
+</head>
+<body>
+<div class="wrap">
+    <div class="top-bar">
+        <a class="back" href="../"><span class="ko">← ButtonMushroom 홈</span><span class="en">← ButtonMushroom Home</span></a>
+        <nav class="lang-switch" aria-label="Language">
+            <button type="button" data-set-lang="ko" aria-pressed="true">한국어</button>
+            <button type="button" data-set-lang="en" aria-pressed="false">EN</button>
+        </nav>
+    </div>
+
+    <div class="app-head">
+        <img src="../assets/icon-wordcell.png" alt="">
+        <div>
+            <h1><span class="ko">Word Cell 지원 센터</span><span class="en">Word Cell Support</span></h1>
+            <p class="meta">
+                <span class="ko">놀면서 10개 언어의 어휘를 익히는 프리셀 방식 단어 퍼즐의 고객지원 페이지입니다.</span>
+                <span class="en">Support page for the FreeCell-style word puzzle that builds vocabulary in 10 languages as you play.</span>
+            </p>
+        </div>
+    </div>
+
+    <!-- 한국어 -->
+    <div class="ko">
+        <h2>게임 방법</h2>
+        <div class="card">
+            <ul>
+                <li><strong>세트 완성</strong>: 주제 카드 아래에 그 주제에 맞는 단어 카드를 모두 쌓으면 세트가 완성되어 사라집니다. 판 위의 카드를 모두 없애면 클리어입니다.</li>
+                <li><strong>겹치기 규칙</strong>: 하단 필드에서는 같은 '정답 주제'를 공유하는 카드끼리만 겹칠 수 있습니다. 이어진 카드는 통째로 옮길 수 있습니다.</li>
+                <li><strong>이동 횟수</strong>: 카드를 뽑을 때(Draw)와 놓을 때(Place)마다 이동 횟수가 소모됩니다.</li>
+                <li><strong>이중 언어</strong>: 카드 앞면은 배우고 싶은 언어로, 카드를 누르면 모국어로 된 상세 설명이 나옵니다.</li>
+            </ul>
+        </div>
+
+        <h2>힌트</h2>
+        <div class="card">
+            <ul>
+                <li><strong>이동 힌트</strong>: 별(⭐) 1개로 다음에 옮기면 좋은 카드를 표시해 줍니다. (모든 모드 공통)</li>
+                <li><strong>단어 설명 보기</strong>: 카드의 모국어 설명은 언제나 무료로 볼 수 있습니다.</li>
+                <li><strong>정답 열람</strong>: 타국어 학습 모드에서는 별(⭐) 1개로 팝업 상단에서 정답 단어를 모국어로 확인할 수 있습니다.</li>
+            </ul>
+        </div>
+
+        <h2>자주 묻는 질문</h2>
+        <div class="card">
+            <p><strong>Q. 학습 언어와 설명 언어를 바꾸려면?</strong><br>
+            설정에서 카드에 표시되는 학습 언어와, 상세 설명에 쓰이는 모국어를 각각 선택할 수 있습니다.</p>
+        </div>
+        <div class="card">
+            <p><strong>Q. 진행 상황이 저장되나요?</strong><br>
+            로그인하면 진행 상황을 클라우드에 저장하고 다른 기기에서도 이어서 플레이할 수 있습니다.</p>
+        </div>
+        <div class="card">
+            <p><strong>Q. 레벨이 안 풀릴 수도 있나요?</strong><br>
+            모든 레벨은 완성된 상태에서 거꾸로 섞어 만들어져, 항상 100% 클리어가 가능합니다. 막히면 힌트를 활용해 보세요.</p>
+        </div>
+
+        <h2>문의</h2>
+        <p>사용 중 불편한 점이나 궁금한 점은 언제든 메일로 보내주세요.</p>
+        <ul>
+            <li>이메일: <a href="mailto:buttonmushroom.co@gmail.com?subject=%5BWord%20Cell%5D%20%EB%AC%B8%EC%9D%98" target="_blank" rel="noopener">buttonmushroom.co@gmail.com</a></li>
+            <li>개인정보처리방침: <a href="./privacy/?lang=ko">보기</a></li>
+        </ul>
+    </div>
+
+    <!-- English -->
+    <div class="en">
+        <h2>How to Play</h2>
+        <div class="card">
+            <ul>
+                <li><strong>Complete a set</strong>: stack every word card that matches a topic under its topic card to clear the set. Remove all cards on the board to win.</li>
+                <li><strong>Stacking rule</strong>: on the field, only cards that share the same correct topic can stack. Connected cards move together as a group.</li>
+                <li><strong>Moves</strong>: each Draw (picking a card up) and Place (putting it down) uses one move.</li>
+                <li><strong>Dual language</strong>: card faces show the language you're learning; tap a card to see the detailed explanation in your native language.</li>
+            </ul>
+        </div>
+
+        <h2>Hints</h2>
+        <div class="card">
+            <ul>
+                <li><strong>Move hint</strong>: spend 1 star (⭐) to highlight a good next card to move. (all modes)</li>
+                <li><strong>Word explanation</strong>: the native-language explanation of a card is always free.</li>
+                <li><strong>Reveal answer</strong>: in foreign-language learning mode, spend 1 star (⭐) to see the answer word in your native language at the top of the popup.</li>
+            </ul>
+        </div>
+
+        <h2>FAQ</h2>
+        <div class="card">
+            <p><strong>Q. How do I change the learning and explanation languages?</strong><br>
+            In Settings you can separately choose the learning language shown on cards and the native language used for explanations.</p>
+        </div>
+        <div class="card">
+            <p><strong>Q. Is my progress saved?</strong><br>
+            Sign in to save your progress to the cloud and continue on other devices.</p>
+        </div>
+        <div class="card">
+            <p><strong>Q. Can a level be unsolvable?</strong><br>
+            Every level is generated by shuffling backward from a solved state, so it is always 100% clearable. If you get stuck, try a hint.</p>
+        </div>
+
+        <h2>Contact</h2>
+        <p>Questions or feedback? We'd love to hear from you.</p>
+        <ul>
+            <li>Email: <a href="mailto:buttonmushroom.co@gmail.com?subject=%5BWord%20Cell%5D%20Support" target="_blank" rel="noopener">buttonmushroom.co@gmail.com</a></li>
+            <li>Privacy policy: <a href="./privacy/?lang=en">View</a></li>
+        </ul>
+    </div>
+
+    <footer>© 2026 ButtonMushroom</footer>
+</div>
+
+<script>
+    (function () {
+        var saved = null;
+        try { saved = localStorage.getItem('bm-lang'); } catch (e) {}
+        var qs = null;
+        try { qs = new URLSearchParams(location.search).get('lang'); } catch (e) {}
+        if (qs !== 'ko' && qs !== 'en') { qs = null; }
+        var lang = qs || saved || ((navigator.language || 'en').toLowerCase().indexOf('ko') === 0 ? 'ko' : 'en');
+        apply(lang);
+
+        document.querySelectorAll('[data-set-lang]').forEach(function (btn) {
+            btn.addEventListener('click', function () {
+                apply(btn.getAttribute('data-set-lang'), true);
+            });
+        });
+
+        function apply(l, save) {
+            document.documentElement.setAttribute('data-lang', l);
+            document.documentElement.setAttribute('lang', l);
+            document.querySelectorAll('[data-set-lang]').forEach(function (b) {
+                var on = b.getAttribute('data-set-lang') === l;
+                b.classList.toggle('active', on);
+                b.setAttribute('aria-pressed', String(on));
+            });
+            if (save) { try { localStorage.setItem('bm-lang', l); } catch (e) {} }
+        }
+    })();
+</script>
+</body>
+</html>
