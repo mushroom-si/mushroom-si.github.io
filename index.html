@@ -122,16 +122,21 @@
         .store-btn:hover { border-color: var(--accent); color: var(--accent); }
         .store-btn svg { width: 14px; height: 14px; flex-shrink: 0; }
 
-        /* 스튜디오 정보 */
-        .info-card {
-            background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 24px;
+        /* 문의 */
+        .contact-card {
+            background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 22px;
+            display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px;
         }
-        .info-row { display: flex; gap: 12px; font-size: 14.5px; padding: 7px 0; }
-        .info-row dt { flex-shrink: 0; width: 110px; color: var(--sub); font-weight: 600; margin: 0; }
-        .info-row dd { margin: 0; }
-        .info-card dl { margin: 0; }
-        .info-card a { color: var(--accent); text-decoration: none; font-weight: 600; }
-        .info-card a:hover { text-decoration: underline; }
+        .contact-card p { margin: 0; max-width: 330px; font-size: 14.5px; color: var(--sub); }
+        .contact-btn {
+            display: inline-flex; align-items: center; gap: 9px;
+            border-radius: 11px; padding: 13px 18px;
+            background: var(--accent); color: var(--on-accent);
+            font-size: 14px; font-weight: 700; text-decoration: none;
+            transition: opacity .15s;
+        }
+        .contact-btn:hover { opacity: .88; }
+        .contact-btn svg { width: 18px; height: 18px; flex-shrink: 0; }
 
         footer {
             margin-top: 56px; padding-top: 20px; border-top: 1px solid var(--line);
@@ -144,8 +149,7 @@
         @media (max-width: 480px) {
             .wrap { padding: 28px 18px 48px; }
             h1 { font-size: 26px; }
-            .info-row { flex-direction: column; gap: 0; }
-            .info-row dt { width: auto; }
+            .contact-btn { width: 100%; justify-content: center; }
         }
     </style>
 </head>
@@ -262,22 +266,19 @@
         </section>
 
         <section>
-            <h2><span class="ko">스튜디오</span><span class="en">Studio</span></h2>
-            <div class="info-card">
-                <dl>
-                    <div class="info-row">
-                        <dt><span class="ko">상호</span><span class="en">Business name</span></dt>
-                        <dd><span class="ko">양송이 (ButtonMushroom)</span><span class="en">ButtonMushroom (양송이)</span></dd>
-                    </div>
-                    <div class="info-row">
-                        <dt><span class="ko">하는 일</span><span class="en">What we do</span></dt>
-                        <dd><span class="ko">모바일 앱 · 게임 개발</span><span class="en">Mobile app &amp; game development</span></dd>
-                    </div>
-                    <div class="info-row">
-                        <dt><span class="ko">문의</span><span class="en">Contact</span></dt>
-                        <dd><a href="mailto:buttonmushroom.co@gmail.com" target="_blank" rel="noopener">buttonmushroom.co@gmail.com</a></dd>
-                    </div>
-                </dl>
+            <h2><span class="ko">문의</span><span class="en">Contact</span></h2>
+            <div class="contact-card">
+                <p>
+                    <span class="ko">앱에 대한 문의나 버그 제보를 메일로 보내 주세요.</span>
+                    <span class="en">Questions or bug reports about our apps are welcome by email.</span>
+                </p>
+                <a class="contact-btn" href="mailto:buttonmushroom.co@gmail.com" target="_blank" rel="noopener">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <rect x="2.5" y="4.5" width="19" height="15" rx="2.5"></rect>
+                        <path d="M3.2 7.2 12 13.2l8.8-6"></path>
+                    </svg>
+                    <span class="ko">메일 보내기</span><span class="en">Send an email</span>
+                </a>
             </div>
         </section>
 
